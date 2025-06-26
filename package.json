@@ -10,12 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
-  "react": "^18.x.x",
-  "react-dom": "^18.x.x",
-  "react-leaflet": "^4.x.x",
-  "leaflet": "^1.9.x",
-}
-,
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-leaflet": "^4.2.1",
+    "leaflet": "^1.9.4"
+  },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
     "@types/react": "^19.1.8",
@@ -28,3 +27,4 @@
     "vite": "^7.0.0"
   }
 }
+
