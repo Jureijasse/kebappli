@@ -14,7 +14,6 @@
   "react-dom": "^18.x.x",
   "react-leaflet": "^4.x.x",
   "leaflet": "^1.9.x",
-  ...
 }
 ,
   "devDependencies": {
