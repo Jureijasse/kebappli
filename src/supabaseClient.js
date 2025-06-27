@@ -1,0 +1,1 @@
+import { createClient } from '@supabase/supabase-js';const supabaseUrl = 'https://yhbafascgnlcmgqkydms.supabase.co';const supabaseKey = 'ta_clé_anon_publique_ici'; // ⚠️ prends bien celle marquée "anon" dans Supabaseexport const supabase = createClient(supabaseUrl, supabaseKey);
