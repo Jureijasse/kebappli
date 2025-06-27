@@ -133,22 +133,48 @@ export default function KebApp() {
   };
 
   const addKebab = async () => {
-    if (!newKebabName.trim()) return alert("Merci de donner un nom au kebab");
+  if (!newKebabName.trim()) {
+    alert("Merci de donner un nom au kebab");
+    return;
+  }
 
-    const { data, error } = await supabase.from("kebabs").insert([
-      {
-        name: newKebabName.trim(),
-        lat: clickPosition.lat,
-        lng: clickPosition.lng,
-      },
-    ]);
+  if (!clickPosition) {
+    alert("Merci de sélectionner un emplacement sur la carte");
+    return;
+  }
 
-    if (error) return alert("Erreur en ajoutant le kebab");
+  console.log("Ajout d’un kebab :", newKebabName.trim(), clickPosition);
 
-    setKebabs([...kebabs, ...data]);
-    setClickPosition(null);
-    setNewKebabName("");
-  };
+  const { data, error } = await supabase.from("kebabs").insert([
+    {
+      name: newKebabName.trim(),
+      lat: clickPosition.lat,
+      lng: clickPosition.lng,
+    },
+  ]);
+
+  if (error) {
+    console.error("Erreur Supabase lors de l'ajout du kebab :", error);
+    alert("Erreur en ajoutant le kebab : " + error.message);
+    return;
+  }
+
+  console.log("Kebab ajouté avec succès :", data);
+
+  setKebabs([...kebabs, ...data]);
+  setClickPosition(null);
+  setNewKebabName("");
+};
+
+  if (error) {
+    return alert("Erreur en ajoutant le kebab : " + error.message);
+  }
+
+  setKebabs([...kebabs, ...data]);
+  setClickPosition(null);
+  setNewKebabName("");
+};
+
 
   // Nouvelle fonction pour mettre à jour un kebab existant
   const updateKebab = async (id, newName, newLat, newLng) => {
